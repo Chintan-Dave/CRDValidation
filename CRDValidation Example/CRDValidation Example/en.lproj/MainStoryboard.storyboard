@@ -96,6 +96,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnAlphaNospaceValidateTap:" destination="2" eventType="touchUpInside" id="vaf-iM-PtZ"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Alphabet With Space" minimumFontSize="17" id="Wqc-fw-Fvl">
                                 <rect key="frame" x="0.0" y="192" width="280" height="40"/>
@@ -115,13 +118,57 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="txtAlphaWithSpaceValidateTap:" destination="2" eventType="touchUpInside" id="4R7-SK-j16"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="String to check length" minimumFontSize="17" id="5RA-n9-YbW">
+                                <rect key="frame" x="0.0" y="241" width="185" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Max" minimumFontSize="17" id="2jL-O3-vV5">
+                                <rect key="frame" x="240" y="240" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Min" minimumFontSize="17" id="Lgu-BF-6vD">
+                                <rect key="frame" x="192" y="240" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1Rt-wN-eJs">
+                                <rect key="frame" x="280" y="241" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Validate" image="check.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnValidateLength:" destination="2" eventType="touchUpInside" id="tLz-eo-zQg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="txtAlphaNoSpace" destination="A3h-Zq-oml" id="UCW-7J-fJl"/>
+                        <outlet property="txtAlphaWithSpace" destination="Wqc-fw-Fvl" id="j0y-O8-Qry"/>
                         <outlet property="txtEmail" destination="jN9-tn-Iw2" id="TGb-yb-9bl"/>
                         <outlet property="txtInteger" destination="WCg-So-QSn" id="JlD-um-N2x"/>
+                        <outlet property="txtLengthStr" destination="5RA-n9-YbW" id="PuC-Ar-f9G"/>
+                        <outlet property="txtMaxLength" destination="2jL-O3-vV5" id="hec-OS-SiI"/>
+                        <outlet property="txtMinLength" destination="Lgu-BF-6vD" id="dBT-H6-GId"/>
                         <outlet property="txtNumber" destination="oZn-lC-7CL" id="Nyk-0d-HJt"/>
                     </connections>
                 </viewController>

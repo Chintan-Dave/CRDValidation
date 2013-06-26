@@ -115,4 +115,87 @@
         NSLog(@"Exception : %@", exception);
     }
 }
++ (enum validationResult) validateAlphaNospace:(NSString *)string isRequire:(BOOL)require;
+{
+    @try
+    {
+        string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        
+        if(require && (string == Nil || [string isEqualToString:@""]))
+        {
+            return ValidationResult_Blank;
+        }
+        
+        NSString *alphaRegex = @"[A-Za-z]+";
+        NSPredicate *alphaTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", alphaRegex];
+        
+        if([alphaTest evaluateWithObject:string])
+        {
+            return ValidationResult_Valid;
+        }
+        else
+        {
+            return ValidationResult_Invalid;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
++ (enum validationResult) validateAlphaWithspace:(NSString *)string isRequire:(BOOL)require
+{
+    @try
+    {
+        string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        
+        if(require && (string == Nil || [string isEqualToString:@""]))
+        {
+            return ValidationResult_Blank;
+        }
+        
+        NSString *alphaRegex = @"[A-Za-z ]+";
+        NSPredicate *alphaTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", alphaRegex];
+        
+        if([alphaTest evaluateWithObject:string])
+        {
+            return ValidationResult_Valid;
+        }
+        else
+        {
+            return ValidationResult_Invalid;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
++ (enum validationResult) validateLength:(NSString *)string min:(NSUInteger)min max:(NSUInteger)max isRequire:(BOOL)require
+{
+    @try
+    {
+        string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        
+        if(require && (string == Nil || [string isEqualToString:@""]))
+        {
+            return ValidationResult_Blank;
+        }
+        
+        if (string.length < min)
+        {
+            return ValidationResult_lessLength;
+        }
+        else if ( string.length > max)
+        {
+            return ValidationResult_moreLength;
+        }
+        
+        return ValidationResult_Valid;
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
 @end

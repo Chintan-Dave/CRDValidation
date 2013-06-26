@@ -13,7 +13,7 @@
 @end
 
 @implementation ViewController
-@synthesize txtEmail,txtNumber, txtInteger;
+@synthesize txtEmail,txtNumber, txtInteger, txtAlphaNoSpace, txtAlphaWithSpace, txtLengthStr, txtMaxLength, txtMinLength;
 
 - (void)viewDidLoad
 {
@@ -25,9 +25,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)txtInteger:(UITextField *)sender {
 }
 
 - (IBAction)btnValidateEmail:(UIButton *)sender
@@ -57,6 +54,42 @@
 - (IBAction)txtValidateInteger:(UIButton *)sender
 {
     if([CRDValidation validateInteger:txtInteger.text isRequire:YES] == ValidationResult_Valid)
+    {
+        [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [sender setImage:[UIImage imageNamed:@"invalid.png"] forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)btnAlphaNospaceValidateTap:(UIButton *)sender
+{
+    if([CRDValidation validateAlphaNospace:txtAlphaNoSpace.text isRequire:YES] == ValidationResult_Valid)
+    {
+        [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [sender setImage:[UIImage imageNamed:@"invalid.png"] forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)txtAlphaWithSpaceValidateTap:(UIButton *)sender
+{
+    if([CRDValidation validateAlphaWithspace:txtAlphaWithSpace.text isRequire:YES] == ValidationResult_Valid)
+    {
+        [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [sender setImage:[UIImage imageNamed:@"invalid.png"] forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)btnValidateLength:(UIButton *)sender
+{
+    if([CRDValidation validateLength:txtLengthStr.text min:[txtMinLength.text integerValue] max:[txtMaxLength.text integerValue] isRequire:YES] == ValidationResult_Valid)
     {
         [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
     }

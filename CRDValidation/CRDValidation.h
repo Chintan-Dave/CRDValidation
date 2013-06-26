@@ -22,7 +22,9 @@ enum validationResult {
                         ValidationResult_Blank,
                         ValidationResult_NotAlpha,
                         ValidationResult_NotNumber,
-                        ValidationResult_NotInteger
+                        ValidationResult_NotInteger,
+                        ValidationResult_lessLength,
+                        ValidationResult_moreLength
                       };
 
 @interface CRDValidation : NSObject
@@ -30,4 +32,8 @@ enum validationResult {
 + (enum validationResult) isBlank:(NSString *)string;
 + (enum validationResult) validateEmail:(NSString *)email isRequire:(BOOL)require;
 + (enum validationResult) validateNumber:(NSString *)number isRequire:(BOOL)require;
++ (enum validationResult) validateInteger:(NSString *)number isRequire:(BOOL)require;
++ (enum validationResult) validateAlphaNospace:(NSString *)string isRequire:(BOOL)require;
++ (enum validationResult) validateAlphaWithspace:(NSString *)string isRequire:(BOOL)require;
++ (enum validationResult) validateLength:(NSString *)string min:(NSUInteger)min max:(NSUInteger)max isRequire:(BOOL)require;
 @end

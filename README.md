@@ -3,6 +3,14 @@ CRDValidation
 
 General Purpos Objective-C Validation Library.
 
+We developer make other work eay.
+To make our work easy we use Library, Freamework or some other tool.
+So one day I start search for Objective-C library to make less code and I found...... !Nothing!
+
+What Nothing! Yes I dont find any general library for input validation.
+Javascript, .net, php all have thair validation library why not us!!
+So I think of making it my self. I hope you will like it.
+
 <h3>How To Use It:</h3>
 
 Add This two File In Your Project:

@@ -13,7 +13,7 @@
 @end
 
 @implementation ViewController
-@synthesize txtEmail;
+@synthesize txtEmail,txtNumber;
 
 - (void)viewDidLoad
 {
@@ -30,6 +30,18 @@
 - (IBAction)btnValidateEmail:(UIButton *)sender
 {
     if([CRDValidation validateEmail:txtEmail.text isRequire:YES] == ValidationResult_Valid)
+    {
+        [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [sender setImage:[UIImage imageNamed:@"invalid.png"] forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)btnValidateNumber:(UIButton *)sender
+{
+    if([CRDValidation validateNumber:txtNumber.text isRequire:YES] == ValidationResult_Valid)
     {
         [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
     }

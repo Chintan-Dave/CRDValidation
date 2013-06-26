@@ -11,6 +11,8 @@
 
 @interface ViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *txtEmail;
+@property (strong, nonatomic) IBOutlet UITextField *txtNumber;
 - (IBAction)btnValidateEmail:(UIButton *)sender;
+- (IBAction)btnValidateNumber:(UIButton *)sender;
 
 @end

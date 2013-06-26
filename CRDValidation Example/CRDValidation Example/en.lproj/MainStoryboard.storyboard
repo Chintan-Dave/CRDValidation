@@ -52,6 +52,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnValidateNumber:" destination="2" eventType="touchUpInside" id="lR5-d8-JrQ"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Integer" minimumFontSize="17" id="WCg-So-QSn">
                                 <rect key="frame" x="0.0" y="96" width="280" height="40"/>
@@ -115,6 +118,7 @@
                     </view>
                     <connections>
                         <outlet property="txtEmail" destination="jN9-tn-Iw2" id="TGb-yb-9bl"/>
+                        <outlet property="txtNumber" destination="oZn-lC-7CL" id="Nyk-0d-HJt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>

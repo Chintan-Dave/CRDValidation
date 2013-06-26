@@ -27,5 +27,7 @@ enum validationResult {
 
 @interface CRDValidation : NSObject
 
++ (enum validationResult) isBlank:(NSString *)string;
 + (enum validationResult) validateEmail:(NSString *)email isRequire:(BOOL)require;
++ (enum validationResult) validateNumber:(NSString *)number isRequire:(BOOL)require;
 @end

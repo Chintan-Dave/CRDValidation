@@ -19,6 +19,9 @@
 		18B5417B177AB8A3008A1878 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18B54179177AB8A3008A1878 /* MainStoryboard.storyboard */; };
 		18B5417E177AB8A3008A1878 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B5417D177AB8A3008A1878 /* ViewController.m */; };
 		18B54187177ABA40008A1878 /* CRDValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B54186177ABA40008A1878 /* CRDValidation.m */; };
+		18B5418C177ACC8C008A1878 /* invalid.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5418A177ACC8C008A1878 /* invalid.png */; };
+		18B5418D177ACC8C008A1878 /* valid.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5418B177ACC8C008A1878 /* valid.png */; };
+		18B5418F177ACD67008A1878 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5418E177ACD67008A1878 /* check.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +43,9 @@
 		18B5417D177AB8A3008A1878 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		18B54185177ABA40008A1878 /* CRDValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRDValidation.h; path = CRDValidation/CRDValidation.h; sourceTree = "<group>"; };
 		18B54186177ABA40008A1878 /* CRDValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRDValidation.m; path = CRDValidation/CRDValidation.m; sourceTree = "<group>"; };
-		18B54188177ABA5A008A1878 /* CWLSynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWLSynthesizeSingleton.h; sourceTree = "<group>"; };
+		18B5418A177ACC8C008A1878 /* invalid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invalid.png; sourceTree = "<group>"; };
+		18B5418B177ACC8C008A1878 /* valid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = valid.png; sourceTree = "<group>"; };
+		18B5418E177ACD67008A1878 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +92,7 @@
 		18B54167177AB8A3008A1878 /* CRDValidation Example */ = {
 			isa = PBXGroup;
 			children = (
+				18B54189177ACC82008A1878 /* Image */,
 				18B54184177AB8C9008A1878 /* CRDValidation */,
 				18B54170177AB8A3008A1878 /* AppDelegate.h */,
 				18B54171177AB8A3008A1878 /* AppDelegate.m */,
@@ -115,11 +121,20 @@
 		18B54184177AB8C9008A1878 /* CRDValidation */ = {
 			isa = PBXGroup;
 			children = (
-				18B54188177ABA5A008A1878 /* CWLSynthesizeSingleton.h */,
 				18B54185177ABA40008A1878 /* CRDValidation.h */,
 				18B54186177ABA40008A1878 /* CRDValidation.m */,
 			);
 			name = CRDValidation;
+			sourceTree = "<group>";
+		};
+		18B54189177ACC82008A1878 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				18B5418E177ACD67008A1878 /* check.png */,
+				18B5418A177ACC8C008A1878 /* invalid.png */,
+				18B5418B177ACC8C008A1878 /* valid.png */,
+			);
+			name = Image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +193,9 @@
 				18B54176177AB8A3008A1878 /* Default@2x.png in Resources */,
 				18B54178177AB8A3008A1878 /* Default-568h@2x.png in Resources */,
 				18B5417B177AB8A3008A1878 /* MainStoryboard.storyboard in Resources */,
+				18B5418C177ACC8C008A1878 /* invalid.png in Resources */,
+				18B5418D177ACC8C008A1878 /* valid.png in Resources */,
+				18B5418F177ACD67008A1878 /* check.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +332,7 @@
 				18B54183177AB8A3008A1878 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

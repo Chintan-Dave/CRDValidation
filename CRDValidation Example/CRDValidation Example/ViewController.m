@@ -13,6 +13,7 @@
 @end
 
 @implementation ViewController
+@synthesize txtEmail;
 
 - (void)viewDidLoad
 {
@@ -26,4 +27,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)btnValidateEmail:(UIButton *)sender
+{
+    if([CRDValidation validateEmail:txtEmail.text isRequire:YES] == ValidationResult_Valid)
+    {
+        [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [sender setImage:[UIImage imageNamed:@"invalid.png"] forState:UIControlStateNormal];
+    }
+}
 @end

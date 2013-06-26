@@ -7,11 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CWLSynthesizeSingleton.h"
 
-enum validationType {Validation_Blank, Validation_Email, Validation_Alpha, Validation_Number, Validation_Integer};
-enum validationResult {ValidationResult_Valid, ValidationResult_Invalid, ValidationResult_Blank};
+enum validationType {
+                        Validation_Blank,
+                        Validation_Email,
+                        Validation_Alpha,
+                        Validation_Number,
+                        Validation_Integer
+                    };
+
+enum validationResult {
+                        ValidationResult_Valid,
+                        ValidationResult_Invalid,
+                        ValidationResult_Blank,
+                        ValidationResult_NotAlpha,
+                        ValidationResult_NotNumber,
+                        ValidationResult_NotInteger
+                      };
 
 @interface CRDValidation : NSObject
-CWL_DECLARE_SINGLETON_FOR_CLASS(CRDValidation);
+
++ (enum validationResult) validateEmail:(NSString *)email isRequire:(BOOL)require;
 @end

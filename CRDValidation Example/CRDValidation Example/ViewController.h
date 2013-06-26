@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CRDValidation.h"
 
 @interface ViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *txtEmail;
+- (IBAction)btnValidateEmail:(UIButton *)sender;
 
 @end

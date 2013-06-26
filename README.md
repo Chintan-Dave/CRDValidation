@@ -11,6 +11,11 @@ What Nothing! Yes I dont find any general library for input validation.
 Javascript, .net, php all have thair validation library why not us!!
 So I think of making it my self. I hope you will like it.
 
+This till in very beginning stage.
+(In fact in development phase.)
+
+So in this phase I need your suggation to make it better when ready.
+
 <h3>How To Use It:</h3>
 
 Add This two File In Your Project:

@@ -86,33 +86,4 @@
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateInteger:(NSString *)number isRequire:(BOOL)require
-{
-    @try
-    {
-        number = [number stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        
-        if(require && (number == Nil || [number isEqualToString:@""]))
-        {
-            return ValidationResult_Blank;
-        }
-        
-        NSScanner* scan = [NSScanner scannerWithString:number];
-        
-        int val;
-        
-        if([scan scanInt:&val] && [scan isAtEnd])
-        {
-            return ValidationResult_Valid;
-        }
-        else
-        {
-            return ValidationResult_Invalid;
-        }
-    }
-    @catch (NSException *exception)
-    {
-        NSLog(@"Exception : %@", exception);
-    }
-}
 @end

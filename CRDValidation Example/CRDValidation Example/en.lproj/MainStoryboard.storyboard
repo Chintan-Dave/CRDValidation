@@ -74,6 +74,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="txtValidateInteger:" destination="2" eventType="touchUpInside" id="yaV-jC-Hb9"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Alphabet Without Space" minimumFontSize="17" id="A3h-Zq-oml">
                                 <rect key="frame" x="0.0" y="144" width="280" height="40"/>
@@ -118,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="txtEmail" destination="jN9-tn-Iw2" id="TGb-yb-9bl"/>
+                        <outlet property="txtInteger" destination="WCg-So-QSn" id="JlD-um-N2x"/>
                         <outlet property="txtNumber" destination="oZn-lC-7CL" id="Nyk-0d-HJt"/>
                     </connections>
                 </viewController>

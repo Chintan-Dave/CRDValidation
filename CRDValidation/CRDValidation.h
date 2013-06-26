@@ -30,5 +30,4 @@ enum validationResult {
 + (enum validationResult) isBlank:(NSString *)string;
 + (enum validationResult) validateEmail:(NSString *)email isRequire:(BOOL)require;
 + (enum validationResult) validateNumber:(NSString *)number isRequire:(BOOL)require;
-+ (enum validationResult) validateInteger:(NSString *)number isRequire:(BOOL)require;
 @end

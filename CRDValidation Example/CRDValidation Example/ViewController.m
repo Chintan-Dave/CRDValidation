@@ -13,7 +13,7 @@
 @end
 
 @implementation ViewController
-@synthesize txtEmail,txtNumber;
+@synthesize txtEmail,txtNumber, txtInteger;
 
 - (void)viewDidLoad
 {
@@ -25,6 +25,9 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)txtInteger:(UITextField *)sender {
 }
 
 - (IBAction)btnValidateEmail:(UIButton *)sender
@@ -42,6 +45,18 @@
 - (IBAction)btnValidateNumber:(UIButton *)sender
 {
     if([CRDValidation validateNumber:txtNumber.text isRequire:YES] == ValidationResult_Valid)
+    {
+        [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [sender setImage:[UIImage imageNamed:@"invalid.png"] forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)txtValidateInteger:(UIButton *)sender
+{
+    if([CRDValidation validateInteger:txtInteger.text isRequire:YES] == ValidationResult_Valid)
     {
         [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
     }

@@ -41,16 +41,8 @@
         else
         {
             NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-			NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
 			
-			if([emailTest evaluateWithObject:email])
-			{
-				return ValidationResult_Valid;
-			}
-            else
-            {
-                return ValidationResult_Invalid;
-            }
+            return [self validateString:email againstRegExp:emailRegex];
         }
     }
     @catch (NSException *exception)
@@ -127,16 +119,8 @@
         }
         
         NSString *alphaRegex = @"[A-Za-z]+";
-        NSPredicate *alphaTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", alphaRegex];
         
-        if([alphaTest evaluateWithObject:string])
-        {
-            return ValidationResult_Valid;
-        }
-        else
-        {
-            return ValidationResult_Invalid;
-        }
+        return [self validateString:string againstRegExp:alphaRegex];
     }
     @catch (NSException *exception)
     {
@@ -155,16 +139,30 @@
         }
         
         NSString *alphaRegex = @"[A-Za-z ]+";
-        NSPredicate *alphaTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", alphaRegex];
         
-        if([alphaTest evaluateWithObject:string])
-        {
-            return ValidationResult_Valid;
-        }
-        else
-        {
-            return ValidationResult_Invalid;
-        }
+        return [self validateString:string againstRegExp:alphaRegex];
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
++ (enum validationResult) validateAlphaNumericNospace:(NSString *)string isRequire:(BOOL)require
+{
+    @try
+    {
+        
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
++ (enum validationResult) validateAlphaNumericWithspace:(NSString *)string isRequire:(BOOL)require
+{
+    @try
+    {
+        
     }
     @catch (NSException *exception)
     {
@@ -192,6 +190,27 @@
         }
         
         return ValidationResult_Valid;
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
+
++ (enum validationResult) validateString:(NSString *)string againstRegExp:(NSString *)regExp
+{
+    @try
+    {
+        NSPredicate *regExpTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regExp];
+        
+        if([regExpTest evaluateWithObject:string])
+        {
+            return ValidationResult_Valid;
+        }
+        else
+        {
+            return ValidationResult_Invalid;
+        }
     }
     @catch (NSException *exception)
     {

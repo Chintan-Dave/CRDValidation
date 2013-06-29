@@ -29,7 +29,7 @@
 
 - (IBAction)btnValidateEmail:(UIButton *)sender
 {
-    if([CRDValidation validateEmail:txtEmail.text isRequire:YES] == ValidationResult_Valid)
+    if([CRDValidation validateEmail:txtEmail.text isRequire:YES] == CRDValidationResultValid)
     {
         [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
     }
@@ -41,7 +41,7 @@
 
 - (IBAction)btnValidateNumber:(UIButton *)sender
 {
-    if([CRDValidation validateNumber:txtNumber.text isRequire:YES] == ValidationResult_Valid)
+    if([CRDValidation validateNumber:txtNumber.text isRequire:YES] == CRDValidationResultValid)
     {
         [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
     }
@@ -53,7 +53,7 @@
 
 - (IBAction)txtValidateInteger:(UIButton *)sender
 {
-    if([CRDValidation validateInteger:txtInteger.text isRequire:YES] == ValidationResult_Valid)
+    if([CRDValidation validateInteger:txtInteger.text isRequire:YES] == CRDValidationResultValid)
     {
         [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
     }
@@ -65,7 +65,7 @@
 
 - (IBAction)btnAlphaNospaceValidateTap:(UIButton *)sender
 {
-    if([CRDValidation validateAlphaNospace:txtAlphaNoSpace.text isRequire:YES] == ValidationResult_Valid)
+    if([CRDValidation validateAlphaNospace:txtAlphaNoSpace.text isRequire:YES] == CRDValidationResultValid)
     {
         [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
     }
@@ -77,7 +77,7 @@
 
 - (IBAction)txtAlphaWithSpaceValidateTap:(UIButton *)sender
 {
-    if([CRDValidation validateAlphaWithspace:txtAlphaWithSpace.text isRequire:YES] == ValidationResult_Valid)
+    if([CRDValidation validateAlphaWithspace:txtAlphaWithSpace.text isRequire:YES] == CRDValidationResultValid)
     {
         [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
     }
@@ -89,7 +89,7 @@
 
 - (IBAction)btnValidateLength:(UIButton *)sender
 {
-    if([CRDValidation validateLength:txtLengthStr.text min:[txtMinLength.text integerValue] max:[txtMaxLength.text integerValue] isRequire:YES] == ValidationResult_Valid)
+    if([CRDValidation validateLength:txtLengthStr.text min:[txtMinLength.text integerValue] max:[txtMaxLength.text integerValue] isRequire:YES] == CRDValidationResultValid)
     {
         [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
     }

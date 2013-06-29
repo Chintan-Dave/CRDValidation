@@ -10,7 +10,7 @@
 
 @implementation CRDValidation
 
-+ (enum validationResult) isBlank:(NSString *)string;
++ (enum CRDValidationResult) isBlank:(NSString *)string;
 {
     @try
     {
@@ -18,17 +18,17 @@
         
         if(string == Nil || [string isEqualToString:@""])
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         
-        return ValidationResult_Valid;
+        return CRDValidationResultValid;
     }
     @catch (NSException *exception)
     {
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateEmail:(NSString *)email isRequire:(BOOL)require
++ (enum CRDValidationResult) validateEmail:(NSString *)email isRequire:(BOOL)require
 {
     @try
     {
@@ -36,7 +36,7 @@
         
         if(require && (email == Nil || [email isEqualToString:@""]))
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         else
         {
@@ -50,7 +50,7 @@
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateNumber:(NSString *)number isRequire:(BOOL)require
++ (enum CRDValidationResult) validateNumber:(NSString *)number isRequire:(BOOL)require
 {
     @try
     {
@@ -58,7 +58,7 @@
         
         if(require && (number == Nil || [number isEqualToString:@""]))
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -66,11 +66,11 @@
     
         if(isNumber)
         {
-            return ValidationResult_Valid;
+            return CRDValidationResultValid;
         }
         else
         {
-            return ValidationResult_Invalid;
+            return CRDValidationResultInvalid;
         }
     }
     @catch (NSException *exception)
@@ -78,7 +78,7 @@
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateInteger:(NSString *)number isRequire:(BOOL)require
++ (enum CRDValidationResult) validateInteger:(NSString *)number isRequire:(BOOL)require
 {
     @try
     {
@@ -86,7 +86,7 @@
         
         if(require && (number == Nil || [number isEqualToString:@""]))
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         
         NSScanner* scan = [NSScanner scannerWithString:number];
@@ -95,11 +95,11 @@
         
         if([scan scanInt:&val] && [scan isAtEnd])
         {
-            return ValidationResult_Valid;
+            return CRDValidationResultValid;
         }
         else
         {
-            return ValidationResult_Invalid;
+            return CRDValidationResultInvalid;
         }
     }
     @catch (NSException *exception)
@@ -107,7 +107,7 @@
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateAlphaNospace:(NSString *)string isRequire:(BOOL)require;
++ (enum CRDValidationResult) validateAlphaNospace:(NSString *)string isRequire:(BOOL)require;
 {
     @try
     {
@@ -115,7 +115,7 @@
         
         if(require && (string == Nil || [string isEqualToString:@""]))
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         
         NSString *alphaRegex = @"[A-Za-z]+";
@@ -127,7 +127,7 @@
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateAlphaWithspace:(NSString *)string isRequire:(BOOL)require
++ (enum CRDValidationResult) validateAlphaWithspace:(NSString *)string isRequire:(BOOL)require
 {
     @try
     {
@@ -135,7 +135,7 @@
         
         if(require && (string == Nil || [string isEqualToString:@""]))
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         
         NSString *alphaRegex = @"[A-Za-z ]+";
@@ -147,7 +147,7 @@
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateAlphaNumericNospace:(NSString *)string isRequire:(BOOL)require
++ (enum CRDValidationResult) validateAlphaNumericNospace:(NSString *)string isRequire:(BOOL)require
 {
     @try
     {
@@ -158,7 +158,7 @@
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateAlphaNumericWithspace:(NSString *)string isRequire:(BOOL)require
++ (enum CRDValidationResult) validateAlphaNumericWithspace:(NSString *)string isRequire:(BOOL)require
 {
     @try
     {
@@ -169,7 +169,7 @@
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateLength:(NSString *)string min:(NSUInteger)min max:(NSUInteger)max isRequire:(BOOL)require
++ (enum CRDValidationResult) validateLength:(NSString *)string min:(NSUInteger)min max:(NSUInteger)max isRequire:(BOOL)require
 {
     @try
     {
@@ -177,19 +177,19 @@
         
         if(require && (string == Nil || [string isEqualToString:@""]))
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         
         if (string.length < min)
         {
-            return ValidationResult_lessLength;
+            return CRDValidationResultLessLength;
         }
         else if ( string.length > max)
         {
-            return ValidationResult_moreLength;
+            return CRDValidationResultMoreLength;
         }
         
-        return ValidationResult_Valid;
+        return CRDValidationResultValid;
     }
     @catch (NSException *exception)
     {
@@ -197,7 +197,7 @@
     }
 }
 
-+ (enum validationResult) validateString:(NSString *)string againstRegExp:(NSString *)regExp
++ (enum CRDValidationResult) validateString:(NSString *)string againstRegExp:(NSString *)regExp
 {
     @try
     {
@@ -205,11 +205,11 @@
         
         if([regExpTest evaluateWithObject:string])
         {
-            return ValidationResult_Valid;
+            return CRDValidationResultValid;
         }
         else
         {
-            return ValidationResult_Invalid;
+            return CRDValidationResultInvalid;
         }
     }
     @catch (NSException *exception)

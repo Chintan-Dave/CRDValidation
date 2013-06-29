@@ -179,27 +179,6 @@
     <resources>
         <image name="check.png" width="512" height="512"/>
     </resources>
-    <classes>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="btnAlphaNospaceValidateTap:" candidateClass="UIButton"/>
-                <relationship kind="action" name="btnValidateEmail:" candidateClass="UIButton"/>
-                <relationship kind="action" name="btnValidateLength:" candidateClass="UIButton"/>
-                <relationship kind="action" name="btnValidateNumber:" candidateClass="UIButton"/>
-                <relationship kind="action" name="txtAlphaWithSpaceValidateTap:" candidateClass="UIButton"/>
-                <relationship kind="action" name="txtValidateInteger:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="txtAlphaNoSpace" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtAlphaWithSpace" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtEmail" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtInteger" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtLengthStr" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtMaxLength" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtMinLength" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtNumber" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

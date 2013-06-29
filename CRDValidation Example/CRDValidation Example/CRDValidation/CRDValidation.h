@@ -36,4 +36,8 @@ enum CRDValidationResult {
 + (enum CRDValidationResult) validateLength:(NSString *)string min:(NSUInteger)min max:(NSUInteger)max isRequire:(BOOL)require;
 
 + (enum CRDValidationResult) validateString:(NSString *)string againstRegExp:(NSString *)regExp;
+
++ (enum CRDValidationResult) validateDate:(NSDate *)date isAfterDate:(NSDate *)pastDate;
++ (enum CRDValidationResult) validateDate:(NSDate *)date isBeforeDate:(NSDate *)futureDate;
++ (enum CRDValidationResult) validateDate:(NSDate *)date isBetweenDate:(NSDate *)firstDate andDate:(NSDate *)secondDate;
 @end

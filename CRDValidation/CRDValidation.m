@@ -10,7 +10,7 @@
 
 @implementation CRDValidation
 
-+ (enum validationResult) isBlank:(NSString *)string;
++ (enum CRDValidationResult) isBlank:(NSString *)string;
 {
     @try
     {
@@ -18,17 +18,17 @@
         
         if(string == Nil || [string isEqualToString:@""])
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         
-        return ValidationResult_Valid;
+        return CRDValidationResultValid;
     }
     @catch (NSException *exception)
     {
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateEmail:(NSString *)email isRequire:(BOOL)require
++ (enum CRDValidationResult) validateEmail:(NSString *)email isRequire:(BOOL)require
 {
     @try
     {
@@ -36,21 +36,13 @@
         
         if(require && (email == Nil || [email isEqualToString:@""]))
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         else
         {
             NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-			NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
 			
-			if([emailTest evaluateWithObject:email])
-			{
-				return ValidationResult_Valid;
-			}
-            else
-            {
-                return ValidationResult_Invalid;
-            }
+            return [self validateString:email againstRegExp:emailRegex];
         }
     }
     @catch (NSException *exception)
@@ -58,7 +50,7 @@
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateNumber:(NSString *)number isRequire:(BOOL)require
++ (enum CRDValidationResult) validateNumber:(NSString *)number isRequire:(BOOL)require
 {
     @try
     {
@@ -66,7 +58,7 @@
         
         if(require && (number == Nil || [number isEqualToString:@""]))
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
@@ -74,11 +66,11 @@
     
         if(isNumber)
         {
-            return ValidationResult_Valid;
+            return CRDValidationResultValid;
         }
         else
         {
-            return ValidationResult_Invalid;
+            return CRDValidationResultInvalid;
         }
     }
     @catch (NSException *exception)
@@ -86,7 +78,7 @@
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateInteger:(NSString *)number isRequire:(BOOL)require
++ (enum CRDValidationResult) validateInteger:(NSString *)number isRequire:(BOOL)require
 {
     @try
     {
@@ -94,7 +86,7 @@
         
         if(require && (number == Nil || [number isEqualToString:@""]))
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         
         NSScanner* scan = [NSScanner scannerWithString:number];
@@ -103,11 +95,11 @@
         
         if([scan scanInt:&val] && [scan isAtEnd])
         {
-            return ValidationResult_Valid;
+            return CRDValidationResultValid;
         }
         else
         {
-            return ValidationResult_Invalid;
+            return CRDValidationResultInvalid;
         }
     }
     @catch (NSException *exception)
@@ -115,7 +107,7 @@
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateAlphaNospace:(NSString *)string isRequire:(BOOL)require;
++ (enum CRDValidationResult) validateAlphaNospace:(NSString *)string isRequire:(BOOL)require;
 {
     @try
     {
@@ -123,27 +115,19 @@
         
         if(require && (string == Nil || [string isEqualToString:@""]))
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         
         NSString *alphaRegex = @"[A-Za-z]+";
-        NSPredicate *alphaTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", alphaRegex];
         
-        if([alphaTest evaluateWithObject:string])
-        {
-            return ValidationResult_Valid;
-        }
-        else
-        {
-            return ValidationResult_Invalid;
-        }
+        return [self validateString:string againstRegExp:alphaRegex];
     }
     @catch (NSException *exception)
     {
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateAlphaWithspace:(NSString *)string isRequire:(BOOL)require
++ (enum CRDValidationResult) validateAlphaWithspace:(NSString *)string isRequire:(BOOL)require
 {
     @try
     {
@@ -151,27 +135,41 @@
         
         if(require && (string == Nil || [string isEqualToString:@""]))
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         
         NSString *alphaRegex = @"[A-Za-z ]+";
-        NSPredicate *alphaTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", alphaRegex];
         
-        if([alphaTest evaluateWithObject:string])
-        {
-            return ValidationResult_Valid;
-        }
-        else
-        {
-            return ValidationResult_Invalid;
-        }
+        return [self validateString:string againstRegExp:alphaRegex];
     }
     @catch (NSException *exception)
     {
         NSLog(@"Exception : %@", exception);
     }
 }
-+ (enum validationResult) validateLength:(NSString *)string min:(NSUInteger)min max:(NSUInteger)max isRequire:(BOOL)require
++ (enum CRDValidationResult) validateAlphaNumericNospace:(NSString *)string isRequire:(BOOL)require
+{
+    @try
+    {
+        
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
++ (enum CRDValidationResult) validateAlphaNumericWithspace:(NSString *)string isRequire:(BOOL)require
+{
+    @try
+    {
+        
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
++ (enum CRDValidationResult) validateLength:(NSString *)string min:(NSUInteger)min max:(NSUInteger)max isRequire:(BOOL)require
 {
     @try
     {
@@ -179,19 +177,98 @@
         
         if(require && (string == Nil || [string isEqualToString:@""]))
         {
-            return ValidationResult_Blank;
+            return CRDValidationResultBlank;
         }
         
         if (string.length < min)
         {
-            return ValidationResult_lessLength;
+            return CRDValidationResultLessLength;
         }
         else if ( string.length > max)
         {
-            return ValidationResult_moreLength;
+            return CRDValidationResultMoreLength;
         }
         
-        return ValidationResult_Valid;
+        return CRDValidationResultValid;
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
+
++ (enum CRDValidationResult) validateString:(NSString *)string againstRegExp:(NSString *)regExp
+{
+    @try
+    {
+        NSPredicate *regExpTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regExp];
+        
+        if([regExpTest evaluateWithObject:string])
+        {
+            return CRDValidationResultValid;
+        }
+        else
+        {
+            return CRDValidationResultInvalid;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
+
++ (enum CRDValidationResult) validateDate:(NSDate *)date isAfterDate:(NSDate *)pastDate
+{
+    @try
+    {
+        if([date compare:pastDate] == NSOrderedDescending)
+        {
+            return CRDValidationResultValid;
+        }
+        else
+        {
+            return CRDValidationResultInvalid;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
++ (enum CRDValidationResult) validateDate:(NSDate *)date isBeforeDate:(NSDate *)futureDate
+{
+    @try
+    {
+        if([date compare:futureDate] == NSOrderedAscending)
+        {
+            return CRDValidationResultValid;
+        }
+        else
+        {
+            return CRDValidationResultInvalid;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
++ (enum CRDValidationResult) validateDate:(NSDate *)date isBetweenDate:(NSDate *)firstDate andDate:(NSDate *)secondDate
+{
+    @try
+    {
+        if ([date compare:firstDate] == NSOrderedAscending)
+        {
+            return CRDValidationResultInvalid;
+        }
+        
+        if ([date compare:secondDate] == NSOrderedDescending)
+        {
+            return CRDValidationResultInvalid;
+        }
+        
+        return CRDValidationResultValid;
     }
     @catch (NSException *exception)
     {

@@ -8,32 +8,36 @@
 
 #import <Foundation/Foundation.h>
 
-enum validationType {
-                        Validation_Blank,
-                        Validation_Email,
-                        Validation_Alpha,
-                        Validation_Number,
-                        Validation_Integer
-                    };
-
-enum validationResult {
-                        ValidationResult_Valid,
-                        ValidationResult_Invalid,
-                        ValidationResult_Blank,
-                        ValidationResult_NotAlpha,
-                        ValidationResult_NotNumber,
-                        ValidationResult_NotInteger,
-                        ValidationResult_lessLength,
-                        ValidationResult_moreLength
+enum CRDValidationResult {
+                        CRDValidationResultValid,
+                        CRDValidationResultInvalid,
+                        CRDValidationResultBlank,
+                        CRDValidationResultNotAlpha,
+                        CRDValidationResultNotNumber,
+                        CRDValidationResultNotInteger,
+                        CRDValidationResultLessLength,
+                        CRDValidationResultMoreLength
                       };
 
 @interface CRDValidation : NSObject
 
-+ (enum validationResult) isBlank:(NSString *)string;
-+ (enum validationResult) validateEmail:(NSString *)email isRequire:(BOOL)require;
-+ (enum validationResult) validateNumber:(NSString *)number isRequire:(BOOL)require;
-+ (enum validationResult) validateInteger:(NSString *)number isRequire:(BOOL)require;
-+ (enum validationResult) validateAlphaNospace:(NSString *)string isRequire:(BOOL)require;
-+ (enum validationResult) validateAlphaWithspace:(NSString *)string isRequire:(BOOL)require;
-+ (enum validationResult) validateLength:(NSString *)string min:(NSUInteger)min max:(NSUInteger)max isRequire:(BOOL)require;
++ (enum CRDValidationResult) isBlank:(NSString *)string;
+
++ (enum CRDValidationResult) validateEmail:(NSString *)email isRequire:(BOOL)require;
+
++ (enum CRDValidationResult) validateNumber:(NSString *)number isRequire:(BOOL)require;
++ (enum CRDValidationResult) validateInteger:(NSString *)number isRequire:(BOOL)require;
+
++ (enum CRDValidationResult) validateAlphaNospace:(NSString *)string isRequire:(BOOL)require;
++ (enum CRDValidationResult) validateAlphaWithspace:(NSString *)string isRequire:(BOOL)require;
++ (enum CRDValidationResult) validateAlphaNumericNospace:(NSString *)string isRequire:(BOOL)require;
++ (enum CRDValidationResult) validateAlphaNumericWithspace:(NSString *)string isRequire:(BOOL)require;
+
++ (enum CRDValidationResult) validateLength:(NSString *)string min:(NSUInteger)min max:(NSUInteger)max isRequire:(BOOL)require;
+
++ (enum CRDValidationResult) validateString:(NSString *)string againstRegExp:(NSString *)regExp;
+
++ (enum CRDValidationResult) validateDate:(NSDate *)date isAfterDate:(NSDate *)pastDate;
++ (enum CRDValidationResult) validateDate:(NSDate *)date isBeforeDate:(NSDate *)futureDate;
++ (enum CRDValidationResult) validateDate:(NSDate *)date isBetweenDate:(NSDate *)firstDate andDate:(NSDate *)secondDate;
 @end

@@ -217,4 +217,62 @@
         NSLog(@"Exception : %@", exception);
     }
 }
+
++ (enum CRDValidationResult) validateDate:(NSDate *)date isAfterDate:(NSDate *)pastDate
+{
+    @try
+    {
+        if([date compare:pastDate] == NSOrderedDescending)
+        {
+            return CRDValidationResultValid;
+        }
+        else
+        {
+            return CRDValidationResultInvalid;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
++ (enum CRDValidationResult) validateDate:(NSDate *)date isBeforeDate:(NSDate *)futureDate
+{
+    @try
+    {
+        if([date compare:futureDate] == NSOrderedAscending)
+        {
+            return CRDValidationResultValid;
+        }
+        else
+        {
+            return CRDValidationResultInvalid;
+        }
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
++ (enum CRDValidationResult) validateDate:(NSDate *)date isBetweenDate:(NSDate *)firstDate andDate:(NSDate *)secondDate
+{
+    @try
+    {
+        if ([date compare:firstDate] == NSOrderedAscending)
+        {
+            return CRDValidationResultInvalid;
+        }
+        
+        if ([date compare:secondDate] == NSOrderedDescending)
+        {
+            return CRDValidationResultInvalid;
+        }
+        
+        return CRDValidationResultValid;
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception : %@", exception);
+    }
+}
 @end

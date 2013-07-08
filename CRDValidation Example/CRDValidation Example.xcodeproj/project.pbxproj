@@ -24,6 +24,7 @@
 		18B5418C177ACC8C008A1878 /* invalid.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5418A177ACC8C008A1878 /* invalid.png */; };
 		18B5418D177ACC8C008A1878 /* valid.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5418B177ACC8C008A1878 /* valid.png */; };
 		18B5418F177ACD67008A1878 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5418E177ACD67008A1878 /* check.png */; };
+		18D44352178A8CBB00D2BE53 /* UITextField+CRDValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D44351178A8CBB00D2BE53 /* UITextField+CRDValidation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		18B5418A177ACC8C008A1878 /* invalid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invalid.png; sourceTree = "<group>"; };
 		18B5418B177ACC8C008A1878 /* valid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = valid.png; sourceTree = "<group>"; };
 		18B5418E177ACD67008A1878 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		18D44350178A8CBB00D2BE53 /* UITextField+CRDValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+CRDValidation.h"; sourceTree = "<group>"; };
+		18D44351178A8CBB00D2BE53 /* UITextField+CRDValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+CRDValidation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 			children = (
 				18B54185177ABA40008A1878 /* CRDValidation.h */,
 				18B54186177ABA40008A1878 /* CRDValidation.m */,
+				18D44350178A8CBB00D2BE53 /* UITextField+CRDValidation.h */,
+				18D44351178A8CBB00D2BE53 /* UITextField+CRDValidation.m */,
 			);
 			name = CRDValidation;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				18B54172177AB8A3008A1878 /* AppDelegate.m in Sources */,
 				18B5417E177AB8A3008A1878 /* ViewController.m in Sources */,
 				18B54187177ABA40008A1878 /* CRDValidation.m in Sources */,
+				18D44352178A8CBB00D2BE53 /* UITextField+CRDValidation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

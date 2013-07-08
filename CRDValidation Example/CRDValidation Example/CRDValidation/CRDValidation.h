@@ -8,16 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
-enum CRDValidationResult {
-                        CRDValidationResultValid,
-                        CRDValidationResultInvalid,
-                        CRDValidationResultBlank,
-                        CRDValidationResultNotAlpha,
-                        CRDValidationResultNotNumber,
-                        CRDValidationResultNotInteger,
-                        CRDValidationResultLessLength,
-                        CRDValidationResultMoreLength
-                      };
+enum CRDValidationType
+{
+    CRDValidationTypeBlank,
+    CRDValidationTypeEmail,
+    CRDValidationTypeNumber,
+    CRDValidationTypeInteger,
+    CRDValidationTypeAlphaNoSpace,
+    CRDValidationTypeAlphaWithSpace,
+    CRDValidationTypeAlphaNumericNospace,
+    CRDValidationTypeAlphaNumericWithspace
+};
+
+enum CRDValidationResult
+{
+    CRDValidationResultValid,
+    CRDValidationResultInvalid,
+    CRDValidationResultBlank,
+    CRDValidationResultNotAlpha,
+    CRDValidationResultNotNumber,
+    CRDValidationResultNotInteger,
+    CRDValidationResultLessLength,
+    CRDValidationResultMoreLength
+};
 
 @interface CRDValidation : NSObject
 

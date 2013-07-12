@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CRDValidation.h"
+#import "UITextField+CRDValidation.h"
 
 @interface ViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITextField *txtEmail;

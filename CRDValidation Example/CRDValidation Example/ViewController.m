@@ -29,14 +29,7 @@
 
 - (IBAction)btnValidateEmail:(UIButton *)sender
 {
-    if([CRDValidation validateEmail:txtEmail.text isRequire:YES] == CRDValidationResultValid)
-    {
-        [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [sender setImage:[UIImage imageNamed:@"invalid.png"] forState:UIControlStateNormal];
-    }
+    [txtEmail validate:CRDValidationTypeEmail showErrorrect:YES];
 }
 
 - (IBAction)btnValidateNumber:(UIButton *)sender

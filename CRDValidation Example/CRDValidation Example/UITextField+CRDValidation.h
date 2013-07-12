@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "CRDValidation.h"
+#import <QuartzCore/QuartzCore.h>
+
+typedef enum CRDValidationType CRDValidationType;
+typedef enum CRDValidationResult CRDValidationResult;
 
 @interface UITextField (CRDValidation)
 
-@property enum CRDValidationType validationType;
-
-- (enum CRDValidationResult) validate;
+- (CRDValidationResult) validate:(CRDValidationType)type;
+- (CRDValidationResult) validate:(CRDValidationType)type showRedRect:(BOOL)errorRect;
+- (CRDValidationResult) validate:(CRDValidationType)type showRedRect:(BOOL)errorRect getFocus:(BOOL)focusOnError;
+- (CRDValidationResult) validate:(CRDValidationType)type showRedRect:(BOOL)errorRect getFocus:(BOOL)focusOnError alertMessage:(NSString *)message;
 @end

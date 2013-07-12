@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		18386F50177B051200B44058 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18386F4F177B051200B44058 /* Icon.png */; };
 		18386F52177B051600B44058 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18386F51177B051600B44058 /* Icon@2x.png */; };
+		184D63EE178EC3D6007C754E /* UITextField+CRDValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D44351178A8CBB00D2BE53 /* UITextField+CRDValidation.m */; };
+		184D63EF178EC4ED007C754E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184D63EC178EC0B5007C754E /* QuartzCore.framework */; };
 		18B54162177AB8A3008A1878 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B54161177AB8A3008A1878 /* UIKit.framework */; };
 		18B54164177AB8A3008A1878 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B54163177AB8A3008A1878 /* Foundation.framework */; };
 		18B54166177AB8A3008A1878 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B54165177AB8A3008A1878 /* CoreGraphics.framework */; };
@@ -24,12 +26,12 @@
 		18B5418C177ACC8C008A1878 /* invalid.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5418A177ACC8C008A1878 /* invalid.png */; };
 		18B5418D177ACC8C008A1878 /* valid.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5418B177ACC8C008A1878 /* valid.png */; };
 		18B5418F177ACD67008A1878 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5418E177ACD67008A1878 /* check.png */; };
-		18D44352178A8CBB00D2BE53 /* UITextField+CRDValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D44351178A8CBB00D2BE53 /* UITextField+CRDValidation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		18386F4F177B051200B44058 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		18386F51177B051600B44058 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		184D63EC178EC0B5007C754E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		18B5415E177AB8A3008A1878 /* CRDValidation Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CRDValidation Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18B54161177AB8A3008A1878 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		18B54163177AB8A3008A1878 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184D63EF178EC4ED007C754E /* QuartzCore.framework in Frameworks */,
 				18B54162177AB8A3008A1878 /* UIKit.framework in Frameworks */,
 				18B54164177AB8A3008A1878 /* Foundation.framework in Frameworks */,
 				18B54166177AB8A3008A1878 /* CoreGraphics.framework in Frameworks */,
@@ -91,6 +94,7 @@
 		18B54160177AB8A3008A1878 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				184D63EC178EC0B5007C754E /* QuartzCore.framework */,
 				18B54161177AB8A3008A1878 /* UIKit.framework */,
 				18B54163177AB8A3008A1878 /* Foundation.framework */,
 				18B54165177AB8A3008A1878 /* CoreGraphics.framework */,
@@ -219,11 +223,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184D63EE178EC3D6007C754E /* UITextField+CRDValidation.m in Sources */,
 				18B5416E177AB8A3008A1878 /* main.m in Sources */,
 				18B54172177AB8A3008A1878 /* AppDelegate.m in Sources */,
 				18B5417E177AB8A3008A1878 /* ViewController.m in Sources */,
 				18B54187177ABA40008A1878 /* CRDValidation.m in Sources */,
-				18D44352178A8CBB00D2BE53 /* UITextField+CRDValidation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +315,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CRDValidation Example/CRDValidation Example-Prefix.pch";
 				INFOPLIST_FILE = "CRDValidation Example/CRDValidation Example-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -322,6 +327,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CRDValidation Example/CRDValidation Example-Prefix.pch";
 				INFOPLIST_FILE = "CRDValidation Example/CRDValidation Example-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

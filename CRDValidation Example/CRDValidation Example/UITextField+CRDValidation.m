@@ -8,44 +8,82 @@
 
 #import "UITextField+CRDValidation.h"
 
+NSString * const kCRDValidationType= @"kCRDValidationType";
+
 @implementation UITextField (CRDValidation)
 
-@dynamic validationType;
-
-- (enum CRDValidationResult) validate;
+- (enum CRDValidationResult) validate:(CRDValidationType)type
 {
     @try
     {
-        switch (self.validationType)
+        enum CRDValidationResult result;
+        
+        switch (type)
         {
             case CRDValidationTypeBlank:
-                return [CRDValidation isBlank:self.text];
+                result = [CRDValidation isBlank:self.text];
                 
             case CRDValidationTypeEmail:
-                return [CRDValidation validateEmail:self.text isRequire:NO];
+                result = [CRDValidation validateEmail:self.text isRequire:NO];
             
             case CRDValidationTypeNumber:
-                return [CRDValidation validateNumber:self.text isRequire:NO];
+                result = [CRDValidation validateNumber:self.text isRequire:NO];
             
             case CRDValidationTypeInteger:
-                return [CRDValidation validateInteger:self.text isRequire:NO];
+                result = [CRDValidation validateInteger:self.text isRequire:NO];
             
             case CRDValidationTypeAlphaNoSpace:
-                return [CRDValidation validateAlphaNospace:self.text isRequire:NO];
+                result = [CRDValidation validateAlphaNospace:self.text isRequire:NO];
             
             case CRDValidationTypeAlphaWithSpace:
-                return [CRDValidation validateAlphaWithspace:self.text isRequire:NO];
+                result = [CRDValidation validateAlphaWithspace:self.text isRequire:NO];
             
             case CRDValidationTypeAlphaNumericNospace:
-                return [CRDValidation validateAlphaNumericNospace:self.text isRequire:NO];
+                result = [CRDValidation validateAlphaNumericNospace:self.text isRequire:NO];
             
             case CRDValidationTypeAlphaNumericWithspace:
-                return [CRDValidation validateAlphaNumericWithspace:self.text isRequire:NO];
+                result = [CRDValidation validateAlphaNumericWithspace:self.text isRequire:NO];
         }
+        
+        return result;
     }
     @catch (NSException *exception)
     {
         NSLog(@"Exception : %@", exception);
     }
+}
+
+- (enum CRDValidationResult) validate:(CRDValidationType)type showRedRect:(BOOL)errorRect
+{
+    CRDValidationResult result = [self validate:type];
+    
+    if(result != CRDValidationResultValid && errorRect)
+    {
+        [self.layer setBorderWidth:2];
+        [self.layer setBorderColor:[UIColor redColor].CGColor];
+        [self setClipsToBounds:YES];
+    }
+    
+    return result;
+}
+
+- (CRDValidationResult) validate:(CRDValidationType)type showRedRect:(BOOL)errorRect getFocus:(BOOL)focusOnError
+{
+    CRDValidationResult result = [self validate:type showRedRect:errorRect];
+    
+    [self becomeFirstResponder];
+    
+    return result;
+}
+
+- (CRDValidationResult) validate:(CRDValidationType)type showRedRect:(BOOL)errorRect getFocus:(BOOL)focusOnError alertMessage:(NSString *)message;
+{
+    CRDValidationResult result = [self validate:type showRedRect:errorRect getFocus:focusOnError];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation" message:message delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    
+    [alert show];
+    
+    return result;
 }
 @end

@@ -22,27 +22,35 @@ NSString * const kCRDValidationType= @"kCRDValidationType";
         {
             case CRDValidationTypeBlank:
                 result = [CRDValidation isBlank:self.text];
+                break;
                 
             case CRDValidationTypeEmail:
                 result = [CRDValidation validateEmail:self.text isRequire:NO];
-            
+                break;
+                
             case CRDValidationTypeNumber:
                 result = [CRDValidation validateNumber:self.text isRequire:NO];
-            
+                break;
+                
             case CRDValidationTypeInteger:
                 result = [CRDValidation validateInteger:self.text isRequire:NO];
-            
+                break;
+                
             case CRDValidationTypeAlphaNoSpace:
                 result = [CRDValidation validateAlphaNospace:self.text isRequire:NO];
-            
+                break;
+                
             case CRDValidationTypeAlphaWithSpace:
                 result = [CRDValidation validateAlphaWithspace:self.text isRequire:NO];
-            
+                break;
+                
             case CRDValidationTypeAlphaNumericNospace:
                 result = [CRDValidation validateAlphaNumericNospace:self.text isRequire:NO];
-            
+                break;
+                
             case CRDValidationTypeAlphaNumericWithspace:
                 result = [CRDValidation validateAlphaNumericWithspace:self.text isRequire:NO];
+                break;
         }
         
         return result;
@@ -63,6 +71,12 @@ NSString * const kCRDValidationType= @"kCRDValidationType";
         [self.layer setBorderColor:[UIColor redColor].CGColor];
         [self setClipsToBounds:YES];
     }
+    else
+    {
+        [self.layer setBorderWidth:0];
+        [self.layer setBorderColor:[UIColor clearColor].CGColor];
+        [self setClipsToBounds:NO];
+    }
     
     return result;
 }
@@ -79,10 +93,17 @@ NSString * const kCRDValidationType= @"kCRDValidationType";
 - (CRDValidationResult) validate:(CRDValidationType)type showRedRect:(BOOL)errorRect getFocus:(BOOL)focusOnError alertMessage:(NSString *)message;
 {
     CRDValidationResult result = [self validate:type showRedRect:errorRect getFocus:focusOnError];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation" message:message delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    
-    [alert show];
+
+    if(result != CRDValidationResultValid && message)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation"
+                                                        message:message
+                                                       delegate:Nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        
+        [alert show];
+    }
     
     return result;
 }

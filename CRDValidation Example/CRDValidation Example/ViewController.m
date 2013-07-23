@@ -29,7 +29,7 @@
 
 - (IBAction)btnValidateEmail:(UIButton *)sender
 {
-    [txtEmail validate:CRDValidationTypeEmail showErrorrect:YES];
+    [txtEmail validate:CRDValidationTypeEmail showRedRect:YES getFocus:YES alertMessage:@"Invalid Email."];
 }
 
 - (IBAction)btnValidateNumber:(UIButton *)sender

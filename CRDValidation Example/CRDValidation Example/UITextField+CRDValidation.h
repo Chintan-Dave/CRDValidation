@@ -19,4 +19,9 @@ typedef enum CRDValidationResult CRDValidationResult;
 - (CRDValidationResult) validate:(CRDValidationType)type showRedRect:(BOOL)errorRect;
 - (CRDValidationResult) validate:(CRDValidationType)type showRedRect:(BOOL)errorRect getFocus:(BOOL)focusOnError;
 - (CRDValidationResult) validate:(CRDValidationType)type showRedRect:(BOOL)errorRect getFocus:(BOOL)focusOnError alertMessage:(NSString *)message;
+
+- (CRDValidationResult) validateWithRegExp:(NSString *)regExp;
+- (CRDValidationResult) validateWithRegExp:(NSString *)regExp showRedRect:(BOOL)errorRect;
+- (CRDValidationResult) validateWithRegExp:(NSString *)regExp showRedRect:(BOOL)errorRect getFocus:(BOOL)focusOnError;
+- (CRDValidationResult) validateWithRegExp:(NSString *)regExp showRedRect:(BOOL)errorRect getFocus:(BOOL)focusOnError alertMessage:(NSString *)message;
 @end

@@ -17,7 +17,8 @@ enum CRDValidationType
     CRDValidationTypeAlphaNoSpace,
     CRDValidationTypeAlphaWithSpace,
     CRDValidationTypeAlphaNumericNospace,
-    CRDValidationTypeAlphaNumericWithspace
+    CRDValidationTypeAlphaNumericWithspace,
+    CRDValidationTypeRegExp
 };
 
 enum CRDValidationResult

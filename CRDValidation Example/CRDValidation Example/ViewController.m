@@ -13,7 +13,7 @@
 @end
 
 @implementation ViewController
-@synthesize txtEmail,txtNumber, txtInteger, txtAlphaNoSpace, txtAlphaWithSpace, txtLengthStr, txtMaxLength, txtMinLength;
+@synthesize txtEmail,txtNumber, txtInteger, txtAlphaNoSpace, txtAlphaWithSpace;
 
 - (void)viewDidLoad
 {
@@ -34,61 +34,22 @@
 
 - (IBAction)btnValidateNumber:(UIButton *)sender
 {
-    if([CRDValidation validateNumber:txtNumber.text isRequire:YES] == CRDValidationResultValid)
-    {
-        [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [sender setImage:[UIImage imageNamed:@"invalid.png"] forState:UIControlStateNormal];
-    }
+    [txtNumber validate:CRDValidationTypeNumber showRedRect:YES getFocus:YES alertMessage:@"Invalid Number."];
 }
 
 - (IBAction)txtValidateInteger:(UIButton *)sender
 {
-    if([CRDValidation validateInteger:txtInteger.text isRequire:YES] == CRDValidationResultValid)
-    {
-        [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [sender setImage:[UIImage imageNamed:@"invalid.png"] forState:UIControlStateNormal];
-    }
+    [txtInteger validate:CRDValidationTypeInteger showRedRect:YES getFocus:YES alertMessage:@"Not An Integer Number."];
 }
 
 - (IBAction)btnAlphaNospaceValidateTap:(UIButton *)sender
 {
-    if([CRDValidation validateAlphaNospace:txtAlphaNoSpace.text isRequire:YES] == CRDValidationResultValid)
-    {
-        [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [sender setImage:[UIImage imageNamed:@"invalid.png"] forState:UIControlStateNormal];
-    }
+    [txtAlphaNoSpace validate:CRDValidationTypeAlphaNoSpace showRedRect:YES getFocus:YES alertMessage:@"Invalid Alpha String."];
 }
 
 - (IBAction)txtAlphaWithSpaceValidateTap:(UIButton *)sender
 {
-    if([CRDValidation validateAlphaWithspace:txtAlphaWithSpace.text isRequire:YES] == CRDValidationResultValid)
-    {
-        [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [sender setImage:[UIImage imageNamed:@"invalid.png"] forState:UIControlStateNormal];
-    }
+    [txtAlphaWithSpace validate:CRDValidationTypeAlphaWithSpace showRedRect:YES getFocus:YES alertMessage:@"Invalid Alpha String."];
 }
 
-- (IBAction)btnValidateLength:(UIButton *)sender
-{
-    if([CRDValidation validateLength:txtLengthStr.text min:[txtMinLength.text integerValue] max:[txtMaxLength.text integerValue] isRequire:YES] == CRDValidationResultValid)
-    {
-        [sender setImage:[UIImage imageNamed:@"valid.png"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [sender setImage:[UIImage imageNamed:@"invalid.png"] forState:UIControlStateNormal];
-    }
-}
 @end

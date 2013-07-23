@@ -51,6 +51,8 @@ NSString * const kCRDValidationType= @"kCRDValidationType";
             case CRDValidationTypeAlphaNumericWithspace:
                 result = [CRDValidation validateAlphaNumericWithspace:self.text isRequire:NO];
                 break;
+            case CRDValidationTypeRegExp:
+                break;
         }
         
         return result;
@@ -85,7 +87,10 @@ NSString * const kCRDValidationType= @"kCRDValidationType";
 {
     CRDValidationResult result = [self validate:type showRedRect:errorRect];
     
-    [self becomeFirstResponder];
+    if(result != CRDValidationResultValid && focusOnError)
+    {
+        [self becomeFirstResponder];
+    }
     
     return result;
 }
@@ -94,6 +99,58 @@ NSString * const kCRDValidationType= @"kCRDValidationType";
 {
     CRDValidationResult result = [self validate:type showRedRect:errorRect getFocus:focusOnError];
 
+    if(result != CRDValidationResultValid && message)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation"
+                                                        message:message
+                                                       delegate:Nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        
+        [alert show];
+    }
+    
+    return result;
+}
+
+- (CRDValidationResult) validateWithRegExp:(NSString *)regExp
+{
+    return [CRDValidation validateString:self.text againstRegExp:regExp];
+}
+- (CRDValidationResult) validateWithRegExp:(NSString *)regExp showRedRect:(BOOL)errorRect
+{
+    CRDValidationResult result = [CRDValidation validateString:self.text againstRegExp:regExp];
+    
+    if(result != CRDValidationResultValid && errorRect)
+    {
+        [self.layer setBorderWidth:2];
+        [self.layer setBorderColor:[UIColor redColor].CGColor];
+        [self setClipsToBounds:YES];
+    }
+    else
+    {
+        [self.layer setBorderWidth:0];
+        [self.layer setBorderColor:[UIColor clearColor].CGColor];
+        [self setClipsToBounds:NO];
+    }
+    
+    return result;
+}
+- (CRDValidationResult) validateWithRegExp:(NSString *)regExp showRedRect:(BOOL)errorRect getFocus:(BOOL)focusOnError
+{
+    CRDValidationResult result = [self validateWithRegExp:regExp showRedRect:errorRect];
+    
+    if(result != CRDValidationResultValid && focusOnError)
+    {
+        [self becomeFirstResponder];
+    }
+    
+    return result;
+}
+- (CRDValidationResult) validateWithRegExp:(NSString *)regExp showRedRect:(BOOL)errorRect getFocus:(BOOL)focusOnError alertMessage:(NSString *)message
+{
+    CRDValidationResult result = [self validateWithRegExp:regExp showRedRect:errorRect getFocus:focusOnError];
+    
     if(result != CRDValidationResultValid && message)
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation"

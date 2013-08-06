@@ -151,7 +151,16 @@
 {
     @try
     {
+        string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         
+        if(require && (string == Nil || [string isEqualToString:@""]))
+        {
+            return CRDValidationResultBlank;
+        }
+        
+        NSString *alphaRegex = @"[A-Za-z0-9]+";
+        
+        return [self validateString:string againstRegExp:alphaRegex];
     }
     @catch (NSException *exception)
     {
@@ -162,7 +171,16 @@
 {
     @try
     {
+        string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         
+        if(require && (string == Nil || [string isEqualToString:@""]))
+        {
+            return CRDValidationResultBlank;
+        }
+        
+        NSString *alphaRegex = @"[A-Za-z0-9 ]+";
+        
+        return [self validateString:string againstRegExp:alphaRegex];
     }
     @catch (NSException *exception)
     {
